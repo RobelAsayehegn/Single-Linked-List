@@ -2,9 +2,10 @@
 #include <stdlib.h>
 
 struct node {
-    int data;          // Data 
-    struct node *next; // Address 
+    int data;
+    struct node *next; 
 }*head;
+
 
 void createList(int n);
 void insertNodeAtMiddle(int data, int position);
@@ -20,7 +21,8 @@ int main()
 {
 	int s,j=2,r;
 	int n, data, position;
-	do{ printf("\n#####################################################################\n");
+	do{ 
+		printf("\n#####################################################################\n");
 		printf("Enter one to create List \n");
 		printf("\nEnter two to add item at the begginning \n");
 		printf("\nEnter three to add item at the end(last) \n");
@@ -31,65 +33,65 @@ int main()
 		printf("\nEnter eight delete all item \n");
 		printf("\n#####################################################################\n");
 		scanf("%d",&s);
-	switch(s)//this switch will help us to choose the operation what we want
-    {
-	    case 1:
-	    	printf("Enter the total number of nodes: ");
-		    scanf("%d", &n);
-		    createList(n);
-		    printf("\nData in the list \n");
-    		displayList();
-	   		break;
-	    case 2:
-	    	printf("\nEnter data to insert at beginning of the list: ");
-		    scanf("%d", &data);
-		    insertNodeAtBeginning(data);
-		    printf("\nData in the list \n");
-    		displayList();
-		    break;
-	    case 3:
-	    	printf("Ensert the data.");
-	    	scanf("%d",&data);
-	    	insertNodeAtEnd(data);
-	    	printf("\nData in the list \n");
-    		displayList();
-	    	break;
-	    case 4:
-	  		printf("nEnter data to insert at middle of the list: ");
-		    scanf("%d", &data);
-		    printf("Enter the position to insert new node: " );
-		    scanf("%d", &position);
-		    insertNodeAtMiddle(data, position);
-		    printf("\nData in the list \n");
-    		displayList();
-	    	break;
-	    case 5:
-		    deleteFirstNode();
-		    printf("\nData in the list \n");
-    		displayList();
-		    break;
-	    case 6:
-		    deleteLastNode();
-		    printf("\nData in the list \n");
-    		displayList();
-		    break;
-	    case 7:
-		    printf("\nEnter the node position you want to delete: ");
-    		scanf("%d", &position);
-    		deleteMiddleNode(position);
-    		printf("\nData in the list \n");
-    		displayList();
-		    break;
-		case 8:
-		    deleteList();
-		    printf("\nData in the list \n");
-    		displayList();
-		    break;
-	    default:
-	    	printf("no operation for this number");
-    }j = 1;
-printf("\nif you want to continue press num>0 else press 0:");
-scanf("%d",&r);//it is related to the do loop which can help us to continue or terminate
+		switch(s)
+	    {
+		    case 1:
+		    	printf("Enter the total number of nodes: ");
+			    scanf("%d", &n);
+			    createList(n);
+			    printf("\nData in the list \n");
+	    		displayList();
+		   		break;
+		    case 2:
+		    	printf("\nEnter data to insert at beginning of the list: ");
+			    scanf("%d", &data);
+			    insertNodeAtBeginning(data);
+			    printf("\nData in the list \n");
+	    		displayList();
+			    break;
+		    case 3:
+		    	printf("Ensert the data.");
+		    	scanf("%d",&data);
+		    	insertNodeAtEnd(data);
+		    	printf("\nData in the list \n");
+	    		displayList();
+		    	break;
+		    case 4:
+		  		printf("nEnter data to insert at middle of the list: ");
+			    scanf("%d", &data);
+			    printf("Enter the position to insert new node: " );
+			    scanf("%d", &position);
+			    insertNodeAtMiddle(data, position);
+			    printf("\nData in the list \n");
+	    		displayList();
+		    	break;
+		    case 5:
+			    deleteFirstNode();
+			    printf("\nData in the list \n");
+	    		displayList();
+			    break;
+		    case 6:
+			    deleteLastNode();
+			    printf("\nData in the list \n");
+	    		displayList();
+			    break;
+		    case 7:
+			    printf("\nEnter the node position you want to delete: ");
+	    		scanf("%d", &position);
+	    		deleteMiddleNode(position);
+	    		printf("\nData in the list \n");
+	    		displayList();
+			    break;
+			case 8:
+			    deleteList();
+			    printf("\nData in the list \n");
+	    		displayList();
+			    break;
+		    default:
+		    	printf("no operation for this number");
+	    }j = 1;
+	printf("\nif you want to continue press num>0 else press 0:");
+	scanf("%d",&r);
 }while(j<=r);
 return 0;
 }
@@ -110,7 +112,8 @@ void insertNodeAtBeginning(int data)
         newNode->next = head;
 
         head = newNode;
-        printf("item inserted in the beggining successfully\n");
+
+        printf("DATA INSERTED SUCCESSFULLY\n");
     }
 }
 
@@ -126,16 +129,15 @@ void insertNodeAtEnd(int data)
     }
     else
     {
-        newNode->data = data; // Link the data part
+        newNode->data = data; 
         newNode->next = NULL; 
 
         temp = head;
 
-        // Traverse to the last node
         while(temp->next != NULL)
             temp = temp->next;
 
-        temp->next = newNode;
+        temp->next = newNode; 
 
         printf("DATA INSERTED SUCCESSFULLY\n");
     }
@@ -192,7 +194,7 @@ void deleteLastNode()
 
         free(toDelete);
 
-        printf("last item deleted successfully\n");
+        printf("SUCCESSFULLY DELETED LAST NODE OF LIST\n");
     }
 }
 
@@ -229,7 +231,7 @@ void deleteMiddleNode(int position)
 
             free(toDelete);
 
-            printf("item deleted successfully\n");
+            printf("SUCCESSFULLY DELETED NODE FROM MIDDLE OF LIST\n");
         }
         else
         {
@@ -250,9 +252,8 @@ void deleteList()
         free(temp);
     }
 
-    printf("Linked list is deleted success \fully\n");
+    printf("SUCCESSFULLY DELETED ALL NODES OF LINKED LIST\n");
 }
-
 
 void createList(int n)
 {
@@ -263,15 +264,16 @@ void createList(int n)
 
     if(head == NULL)
     {
-        printf("there is no allocated memory.");
+        printf("Unable to allocate memory.");
     }
     else
     {
+
         printf("Enter the data of node 1: ");
         scanf("%d", &data);
 
-        head->data = data; 
-        head->next = NULL; 
+        head->data = data; // Link the data field with data
+        head->next = NULL; // Link the address field to NULL
 
         temp = head;
 
@@ -292,15 +294,14 @@ void createList(int n)
                 newNode->data = data; 
                 newNode->next = NULL; 
 
-                temp->next = newNode;
+                temp->next = newNode; 
                 temp = temp->next;
             }
         }
 
-        printf("linked list created successfully\n");
+        printf("SINGLY LINKED LIST CREATED SUCCESSFULLY\n");
     }
 }
-
 
 void insertNodeAtMiddle(int data, int position)
 {
@@ -311,11 +312,11 @@ void insertNodeAtMiddle(int data, int position)
 
     if(newNode == NULL)
     {
-        printf("there is no allocated memory.");
+        printf("Unable to allocate memory.");
     }
     else
     {
-        newNode->data = data; // Link data part
+        newNode->data = data; 
         newNode->next = NULL;
 
         temp = head;
@@ -331,16 +332,15 @@ void insertNodeAtMiddle(int data, int position)
         if(temp != NULL)
         {
             newNode->next = temp->next; 
-
             temp->next = newNode;
 
-            printf("data insertion success.\n");
+            printf("DATA INSERTED SUCCESSFULLY\n");
             printf("\nData in the list \n");
   			displayList();
         }
         else
         {
-            printf("data insertion failed.\n");
+            printf("UNABLE TO INSERT DATA AT THE GIVEN POSITION\n");
         }
     }
 }
@@ -359,8 +359,8 @@ void displayList()
         temp = head;
         while(temp != NULL)
         {
-            printf("Data = %d\n", temp->data); // Print data of current node
-            temp = temp->next;                 // Move to next node
+            printf("Data = %d\n", temp->data); 
+            temp = temp->next;                 
         }
     }
 }
